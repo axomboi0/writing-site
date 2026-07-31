@@ -23,22 +23,18 @@ const chapters = [
     status: "posted",          // "posted" or "soon"
     badge: "",                 // e.g. "new" — leave "" for none
     text: [
-      The sun was shining bright, colors blooming with harmony. The little kid saw the world with different colors. He took his little steps carefully but playfully, it was his first day in school. Nervous is understatement but excitement took over it.
-
-The walls were white as if they were clouds, he was glittering over the class.
-"I am Ray" he introduced himself shyly, he has never been with so many strangers but not for too long.
-
-As days passed by everyday with new wonders, the birds flying, parrots he saw parrots they built a nest on their tree. Everyday he learns new things.
-
-"Ray, are you having trouble in addition?" she smiled brightly.
-Ray looked with puppy eyes asking for help, he nodded.
-"So Ray look how many fingers I have" she raised her one hands, 
-Ray said with confidence "Ma'am 5, 5"
-"That's right, Ray you are so smart, so if I have five and my other hand five what will it be" she asked gently.
-Ray thought for a while and his face lit up "Ma'am it's 10" he said with a bright smile.
-"That's right, Ray you did well" she padded his head
-
-It was probably the only affection he got in a while.
+      "The sun was shining bright, colors blooming with harmony. The little kid saw the world with different colors. He took his little steps carefully but playfully, it was his first day in school. Nervous is understatement but excitement took over it.",
+      "The walls were white as if they were clouds, he was glittering over the class.",
+      "\"I am Ray\" he introduced himself shyly, he has never been with so many strangers but not for too long.",
+      "As days passed by everyday with new wonders, the birds flying, parrots he saw parrots they built a nest on their tree. Everyday he learns new things.",
+      "\"Ray, are you having trouble in addition?\" she smiled brightly.",
+      "Ray looked with puppy eyes asking for help, he nodded.",
+      "\"So Ray look how many fingers I have\" she raised her one hands, ",
+      "Ray said with confidence \"Ma'am 5, 5\"",
+      "\"That's right, Ray you are so smart, so if I have five and my other hand five what will it be\" she asked gently.",
+      "Ray thought for a while and his face lit up \"Ma'am it's 10\" he said with a bright smile.",
+      "\"That's right, Ray you did well\" she padded his head",
+      "It was probably the only affection he got in a while."
     ]
   },
   {
