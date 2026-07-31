@@ -39,7 +39,7 @@ const chapters = [
   },
   {
     title: "Chapter Two:",
-    meta: "posted · 1,850 words",
+    meta: "posted · 185 words",
     status: "posted",
     badge: "",
     text: [
@@ -58,7 +58,7 @@ const chapters = [
   },
   {
     title: "Chapter Three:",
-    meta: "posted · 2,100 words",
+    meta: "posted · 200 words",
     status: "posted",
     badge: "new",
     text: [
@@ -75,9 +75,9 @@ const chapters = [
   },
   {
     title: "Chapter Four:",
-    meta: "coming soon",
-    status: "soon",
-    badge: "soon",
+    meta: "posted · 200 words",
+    status: "posted",
+    badge: "new",
     text: [
       "School has become less enjoyable, it was worse than home. Rory felt humiliated by that day, he didn't leave any chance to make Ray's peaceful days his personal hell.",
       "\"Ma'am Rory isn't letting me play with others, he keeps pushing me\" he was uncontrollably sobbing.",
@@ -89,6 +89,13 @@ const chapters = [
       "Ray was scared, loud noises made him feel terrified. ",
       "Ray saw his mother crying, he felt guilty. He questioned if only he wasn't born would be his mother be happy. Could be that his mother's suffering was due to his existence, she was trapped in a marriage with a child. If only he wasn't born that she could be free.",
       "\"What do you want to be when you grow up Ray?\" Huh Ray thought but he never knew what he wanted to be when he grew up, so he said what he saw in TV, an astronaut."
+      ]
+  },
+  {
+    title: "Chapter Five:",
+    meta: "posted · 200 words",
+    status: "soon",
+    badge: "", 
     ]
   }
 ];
