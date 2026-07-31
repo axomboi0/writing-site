@@ -92,10 +92,12 @@ const chapters = [
       ]
   },
   {
-    title: "Chapter Five:",
-    meta: "posted · 200 words",
+    title: "Chapter Five: Coming Soon",
+    meta: "coming soon",
     status: "soon",
-    badge: "", 
+    badge: "soon",
+    text: [
+      "This chapter isn't posted yet."
     ]
   }
-];
+];;
