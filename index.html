@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss-dark:   #4a5c3a;
+    --moss:        #7a9463;
+    --sage:        #a8bd8f;
+    --sage-light:  #c9d9b4;
+    --cream:       #faf4de;
+    --cream-card:  #fbf7e6;
+    --berry:       #b8503f;
+    --berry-dark:  #8f3c2f;
+    --ink:         #3f4d33;
+    --line:        #8aa06f;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    font-family:'Quicksand', sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 10% 15%, rgba(255,255,255,0.5) 0, transparent 3%),
+      radial-gradient(circle at 85% 10%, rgba(255,255,255,0.4) 0, transparent 2.5%),
+      radial-gradient(circle at 70% 80%, rgba(255,255,255,0.5) 0, transparent 3%),
+      radial-gradient(circle at 25% 90%, rgba(255,255,255,0.45) 0, transparent 2.5%),
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.35) 0, transparent 2%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.35) 0 2px, transparent 2px 34px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.25) 0 2px, transparent 2px 34px),
+      linear-gradient(160deg, #dfe9cd 0%, #cfe0bb 45%, #e4ecd6 100%);
+    min-height:100vh;
+    padding:48px 16px;
+  }
+
+  .page{
+    max-width:760px;
+    margin:0 auto;
+  }
+
+  /* ---------- browser frame ---------- */
+  .frame{
+    background:var(--sage-light);
+    border:3px solid var(--moss-dark);
+    border-radius:22px;
+    box-shadow:0 18px 0 -6px rgba(74,92,58,0.15), 0 22px 40px rgba(74,92,58,0.25);
+    overflow:hidden;
+  }
+
+  .titlebar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 16px 0 16px;
+    background:var(--moss);
+  }
+  .dot{ width:11px; height:11px; border-radius:50%; background:var(--cream); opacity:.85; }
+
+  .navrow{
+    display:flex;
+    gap:10px;
+    padding:12px 16px;
+    background:var(--moss);
+    flex-wrap:wrap;
+  }
+  .navtab{
+    background:var(--cream-card);
+    border:2px solid var(--moss-dark);
+    border-radius:14px 14px 4px 4px;
+    padding:7px 16px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--moss-dark);
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+    transition:transform .15s ease;
+    text-decoration:none;
+  }
+  .navtab:hover{ transform:translateY(-2px); background:#fff; }
+  .navtab.active{ background:var(--cream); }
+
+  .addressrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 16px 16px 16px;
+    background:var(--moss);
+  }
+  .arrow{
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--sage-light);
+    border:2px solid var(--moss-dark);
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;color:var(--moss-dark);
+    flex-shrink:0;
+  }
+  .addressbar{
+    flex:1;
+    background:var(--cream);
+    border:2px solid var(--moss-dark);
+    border-radius:20px;
+    padding:8px 16px;
+    font-size:13px;
+    letter-spacing:.3px;
+    color:var(--moss-dark);
+    font-family:'Quicksand',sans-serif;
+    font-weight:600;
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .heart-btn{
+    width:32px;height:30px;
+    border-radius:16px;
+    background:var(--cream-card);
+    border:2px solid var(--moss-dark);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;
+    flex-shrink:0;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 88% 30%, rgba(184,80,63,0.10), transparent 45%),
+      linear-gradient(120deg, var(--sage-light) 0%, var(--cream) 100%);
+    padding:38px 28px 34px 28px;
+    overflow:hidden;
+    border-bottom:3px solid var(--moss-dark);
+  }
+  .hero-title{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:clamp(30px,7vw,44px);
+    color:var(--moss-dark);
+    margin:0 0 6px 0;
+    letter-spacing:.5px;
+  }
+  .hero-sub{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    color:var(--berry-dark);
+    margin:0;
+  }
+  .hero-tag{
+    margin-top:14px;
+    max-width:60%;
+    font-size:14px;
+    line-height:1.6;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .apple-deco{
+    position:absolute;
+    right:-30px;
+    bottom:-40px;
+    width:190px;
+    opacity:.95;
+  }
+  .squiggle{
+    position:absolute;
+    left:24px;
+    bottom:16px;
+    width:70px;
+    opacity:.55;
+  }
+
+  /* ---------- info panels ---------- */
+  .panels{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    padding:20px;
+    background:var(--sage-light);
+  }
+  @media (max-width:520px){ .panels{ grid-template-columns:1fr; } }
+
+  .panel{
+    background:var(--cream-card);
+    border:2.5px solid var(--moss-dark);
+    border-radius:14px;
+    padding:16px 18px 18px 18px;
+  }
+  .panel h2{
+    font-family:'Baloo 2', sans-serif;
+    font-size:18px;
+    color:var(--moss-dark);
+    margin:0 0 10px 0;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .panel p{
+    font-size:13.5px;
+    line-height:1.75;
+    margin:0;
+    color:var(--ink);
+  }
+  mark{
+    background:var(--sage-light);
+    color:var(--ink);
+    padding:0 2px;
+    border-radius:3px;
+  }
+  .readme-tag{
+    display:inline-block;
+    background:var(--sage);
+    color:#fff;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:600;
+    font-size:10.5px;
+    letter-spacing:.5px;
+    padding:2px 9px;
+    border-radius:8px;
+    margin-bottom:8px;
+  }
+  .icon-row{
+    display:flex;
+    gap:10px;
+    margin-top:14px;
+  }
+  .icon-circle{
+    width:34px;height:34px;
+    border-radius:50%;
+    background:var(--sage);
+    border:2px solid var(--moss-dark);
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;
+    color:#fff;
+    text-decoration:none;
+  }
+
+  /* ---------- chapters ---------- */
+  .chapters{
+    background:var(--sage-light);
+    padding:4px 20px 20px 20px;
+  }
+  .chapters-panel{
+    background:var(--cream-card);
+    border:2.5px solid var(--moss-dark);
+    border-radius:14px;
+    padding:18px 18px 8px 18px;
+  }
+  .chapters-panel h2{
+    font-family:'Baloo 2', sans-serif;
+    font-size:18px;
+    color:var(--moss-dark);
+    margin:0 0 4px 0;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .chapters-panel .sub{
+    font-size:12.5px;
+    color:var(--moss);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .chapter-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--cream);
+    border:2px solid var(--sage);
+    border-radius:12px;
+    padding:11px 14px;
+    margin-bottom:10px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .chapter-item:hover{ transform:translateX(3px); border-color:var(--berry); }
+  .chapter-num{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:13px;
+    color:#fff;
+    background:var(--moss);
+    border-radius:8px;
+    padding:5px 9px;
+    flex-shrink:0;
+  }
+  .chapter-info{ flex:1; min-width:0; }
+  .chapter-info .name{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--moss-dark);
+  }
+  .chapter-info .meta{
+    font-size:11.5px;
+    color:var(--moss);
+    font-weight:600;
+  }
+  .chapter-badge{
+    font-size:10px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    padding:3px 8px;
+    border-radius:8px;
+    background:var(--berry);
+    color:#fff;
+    flex-shrink:0;
+  }
+  .chapter-badge.soon{ background:var(--sage); color:var(--moss-dark); }
+
+  /* ---------- footer ---------- */
+  .footer{
+    background:linear-gradient(180deg, var(--sage) 0%, var(--moss) 100%);
+    text-align:center;
+    padding:12px;
+    font-size:11.5px;
+    color:var(--cream);
+    font-weight:600;
+    letter-spacing:.3px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="frame">
+
+    <div class="titlebar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+
+    <div class="navrow">
+      <a class="navtab active" href="#home">🍏 Home</a>
+      <a class="navtab" href="#chapters">📖 Chapters</a>
+      <a class="navtab" href="#about">🌿 About</a>
+      <a class="navtab" href="#contact">💌 Contact</a>
+    </div>
+
+    <div class="addressrow">
+      <div class="arrow">←</div>
+      <div class="arrow">→</div>
+      <div class="arrow">↻</div>
+      <div class="addressbar">yourstory.reads/home</div>
+      <div class="heart-btn">♡</div>
+    </div>
+
+    <div class="hero" id="home">
+      <h1 class="hero-title">Story Title!</h1>
+      <p class="hero-sub">a novel by Your Name 🍎</p>
+      <p class="hero-tag">One line that hooks a reader — the mood, the stakes, or the world in a single breath.</p>
+
+      <svg class="apple-deco" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 70 C40 55 20 75 25 105 C30 140 55 175 90 175 C100 175 105 170 110 170 C115 170 120 175 130 175 C165 175 190 140 195 105 C200 75 180 55 160 70 C145 82 132 60 110 62 C88 64 75 82 60 70 Z" fill="#b8503f" stroke="#4a5c3a" stroke-width="4"/>
+        <path d="M108 60 C108 40 118 28 130 22" stroke="#5c4530" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M128 30 C140 20 155 24 158 36 C161 48 148 54 138 50" fill="#7a9463" stroke="#4a5c3a" stroke-width="3"/>
+        <ellipse cx="82" cy="118" rx="7" ry="10" fill="#4a5c3a"/>
+        <ellipse cx="128" cy="118" rx="7" ry="10" fill="#4a5c3a"/>
+      </svg>
+
+      <svg class="squiggle" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20 Q 15 2, 28 20 T 54 20 T 80 20 T 98 20" stroke="#4a5c3a" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="panels" id="about">
+      <div class="panel">
+        <h2>🍎 The Story</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <mark>Ut enim ad minim veniam</mark>, quis nostrud exercitation.</p>
+      </div>
+      <div class="panel">
+        <h2>🌱 Updates!</h2>
+        <span class="readme-tag">ReadMe</span>
+        <p>New chapter posted every <mark>Sunday</mark>. Come say hi and follow along — link in the socials below!</p>
+        <div class="icon-row">
+          <a class="icon-circle" href="#" title="Instagram">◎</a>
+          <a class="icon-circle" href="#" title="Discord">✦</a>
+          <a class="icon-circle" href="#" title="Playlist">♪</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapters" id="chapters">
+      <div class="chapters-panel">
+        <h2>📖 Chapters</h2>
+        <div class="sub">reading order, newest first</div>
+
+        <a class="chapter-item" href="#">
+          <span class="chapter-num">03</span>
+          <div class="chapter-info">
+            <div class="name">Chapter Three: Placeholder Title</div>
+            <div class="meta">posted · 2,100 words</div>
+          </div>
+          <span class="chapter-badge">new</span>
+        </a>
+
+        <a class="chapter-item" href="#">
+          <span class="chapter-num">02</span>
+          <div class="chapter-info">
+            <div class="name">Chapter Two: Placeholder Title</div>
+            <div class="meta">posted · 1,850 words</div>
+          </div>
+        </a>
+
+        <a class="chapter-item" href="#">
+          <span class="chapter-num">01</span>
+          <div class="chapter-info">
+            <div class="name">Chapter One: Placeholder Title</div>
+            <div class="meta">posted · 2,400 words</div>
+          </div>
+        </a>
+
+        <a class="chapter-item" href="#" style="opacity:.7">
+          <span class="chapter-num">04</span>
+          <div class="chapter-info">
+            <div class="name">Chapter Four: Placeholder Title</div>
+            <div class="meta">coming soon</div>
+          </div>
+          <span class="chapter-badge soon">soon</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="panels" id="contact">
+      <div class="panel" style="grid-column:1/-1;">
+        <h2>💌 Say Hello</h2>
+        <p>Questions, comments, or just want to yell about a plot twist? Reach out through the socials above, or drop an ask on my page — I read every one. 🍎</p>
+      </div>
+    </div>
+
+    <div class="footer">( made with love, one chapter at a time )</div>
+
+  </div>
+</div>
+</body>
+</html>
